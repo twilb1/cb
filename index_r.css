@@ -1,0 +1,63 @@
+* {
+    font-family: 'Palatino';
+    font-size: 11pt;
+  }
+  
+  .chat {
+    width: 500px;
+    height: 75%;
+    position: fixed;
+    overflow: scroll;
+  }
+  
+  .actions {
+    position: fixed;
+    bottom: 0;
+    display: block;
+    width: 100%;
+  }
+  
+  .actions input{
+    height: 30px;
+    display: block;
+    width: 100%;
+    outline: 0;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+  
+  .messages div {
+    max-width: 60%;
+    display: block;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 7px;
+  }
+  
+  .messages .bot {
+    text-align: left;
+    margin-right: auto;
+    background: lightblue;
+  }
+  
+  .messages .self {
+    text-align: right;
+    margin-left: auto;
+    background: rgb(224, 188, 188)
+  }
+
+  .chat .actions .checkbox {
+    display: inline-block;
+    width: 25px;
+    position: right;
+  }
+
+  .logging {
+    width: 1000px;
+    height: 100px;
+    position: relative;
+    overflow: scroll;
+  }
+  
+  input[type="text"] { border: 1px solid #d66; border-width: 5px}

@@ -1,0 +1,91 @@
+// Chatbot's brain
+
+// ! version = 2.0
+
+// ! sub who's = who is
+
+! version = 2.0
+
++ (hi|hello) [*]
+- Hello, I am Maximus Decimus Meridius, formerly commander of the armies to the North, but now the T W I chatbot! What is your name? 
+
++ (my name is|*)
+% hello * 
+- Hi <star>. How can I help? 
+
++ how are you
+- I'm fine, thanks for asking!
+
++ [*] contact [*]
+- You can talk to our Business Development Officer, Emmet Kearney. 
+
++ [*] (service|services) [*]
+- We provide a wide variety of documentation services, for example, "Technical Writing", "Editing" and "Information Design". What service are you interested in? 
+
++ [*] other [*]
+- We also provide "Project Management", "Business Writing", "Life Sciences Documentation", and "User Documentation".
+
++ [*] editing [*]
+- We provide proofreading and editing performed by knowledgeable and experienced writers. 
+
++ [*] information design [*]
+- We create customised documentation plans, style guides, and templates. 
+
++ [*] business [*]
+- We can support you if you are having difficulties with business reports, tenders, white papers, brochures, website content, or video scripts. 
+
++ [*] life [*]
+- We are technical communication experts, competent in industry standards, best practices, tools, technologies, and delivery formats, as well as emerging trends in Life Sciences documentation. As your documentation partner, T W I provides flexible, scalable, customised service offerings that can integrate with your teams. 
+
++ [*] user [*]
+- Many companies struggle to create comprehensive, user-focused product documentation. We have a track record of supporting leading global Software, MedTech, and Bio/Pharma companies. A user-centred approach is at the core of our practice. We can help you produce the user documentation you need to support user success, whether it's IFUs or FAQs, printed manuals or online help. 
+
++ [*] training [*]
+- We provide an Introduction to Technical Writing course and an Effective Writing Skills course that can be adapted to your needs. 
+
++ [*] technical writing [*]
+- We have an extensive team of technical writers with diverse backgrounds and experience in mnany different fields and disciplines. We are confident that we can fulfill your technical writing needs.
+
++ [*] project management [*]
+- Senior staff members have a wealth of experience and are well equipped to handle the most challenging of
+^  documentation projects should you choose to outsource all or some of your project management tasks. 
+
++ [*] started [*]
+- Simply give us a call at + 353 (0) 21 242 8800 or email us at info@technicallywriteIT.com. We would love to hear from you.
+
++ [*] (cool|very good) [*]
+- We like to think so, but we are always looking for new opportunities.
+
++ [*] (thank you|thanks) [*]
+- You are very welcome! 
+
++ [*] writers [*]
+- We have approximately 30 writers at various locations throughout Ireland. 
+
++ [*] api [*]
+- Yes, we have documented REST and other APIs in the past and we are always keen to engage with customers on the latest tools and technologies in this area. 
+
++ [*] no [*]
+- OK, do you have another question that I can help you with? 
+
++ [*] (location|located) [*]
+- Our headquarters is in Carrigaline, County Cork, Ireland, but we have writers at several locations throughout Ireland? 
+
++ [*] (locations) [*]
+- Dublin, Limerick, Galway, and others. We really have all geographies in Ireland covered. 
+
++ [*] ireland [*]
+- Yes, that's how I pronounce it! Is that incorrect? 
+
++ [*] ok [*]
+- Do you have another question? I will try to answer.  
+
++ *
+- I'm sorry I didn't understand. Can you repeat or rephrase your question for me?
+
++ [*] commodus [*]
+- I am loyal only to the true emperor Markus Aurelius and I will have my vengeance in this life or the next.
+
++ [*] goodbye|bye [*]
+- It has been nice talking to you. I hope I have been of some assistance and I look forward to talking with you again. Goodbye!  
+

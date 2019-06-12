@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simple Chatbot Using RiveScript</title>
+    <link rel="stylesheet" href="index_r.css">
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div class="chat">
+    <div class="messages"></div>
+    <div id="edge"></div>
+  <form class="actions">
+        <input type="text" placeholder="Press 'Enter' to send...">
+      <b>Enable Voice </b><input class="checkbox" type="checkbox" name="checkbox">(Chrome Browser Only)
+<!--      <button name="btn" id="btn" value=1 ><i class="fa fa-microphone"></i></button> -->
+      <div style="width: 100%; display: table;">
+<!--        <div id="logging" class="logging"><p><b>Log Information:</b></p></div> -->
+      </div>
+<!--  Add hidden placeholders fields for the user input and cbot reply boxes created by js -->
+      <input type="hidden" id="p_usertxt">
+      <input type="hidden" id="p_cbottxt">
+    </form>     
+  </div>
+  <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/rivescript@latest/dist/rivescript.min.js"></script>
+  <script type="text/javascript" src="my_rvs.js"></script>
+  <script type="text/javascript" src="db_if.js"></script>
+</body>
+</html>
