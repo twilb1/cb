@@ -7,7 +7,7 @@
 ! version = 2.0
 
 + (hi|hello) [*]
-- Hello, I am Maximus Decimus Meridius, formerly commander of the armies to the North, but now the T W I chatbot! What is your name? 
+- Hello, I am Maximus Decimus Meridius, formerly commander of the armies to the North, but now the T W I chat bot! What is your name? 
 
 + (my name is|*)
 % hello * 
@@ -20,7 +20,7 @@
 - You can talk to our Business Development Officer, Emmet Kearney. 
 
 + [*] (service|services) [*]
-- We provide a wide variety of documentation services, for example, "Technical Writing", "Editing" and "Information Design". What service are you interested in? 
+- We provide a wide variety of documentation services, for example, "Technical Writing", "Editing", and "Information Design". What service are you interested in? 
 
 + [*] other [*]
 - We also provide "Project Management", "Business Writing", "Life Sciences Documentation", and "User Documentation".
@@ -38,7 +38,7 @@
 - We are technical communication experts, competent in industry standards, best practices, tools, technologies, and delivery formats, as well as emerging trends in Life Sciences documentation. As your documentation partner, T W I provides flexible, scalable, customised service offerings that can integrate with your teams. 
 
 + [*] user [*]
-- Many companies struggle to create comprehensive, user-focused product documentation. We have a track record of supporting leading global Software, MedTech, and Bio/Pharma companies. A user-centred approach is at the core of our practice. We can help you produce the user documentation you need to support user success, whether it's IFUs or FAQs, printed manuals or online help. 
+- Many companies struggle to create comprehensive, user-focused product documentation. We have a track record of supporting leading global Software, MedTech, and Bio/Pharma companies. A user-centred approach is at the core of our practice. We can help you produce the user documentation you need to support user success, whether it's IFUs or FAQs, printed manuals, or online help. 
 
 + [*] training [*]
 - We provide an Introduction to Technical Writing course and an Effective Writing Skills course that can be adapted to your needs. 
@@ -68,7 +68,7 @@
 + [*] no [*]
 - OK, do you have another question that I can help you with? 
 
-+ [*] (location|located) [*]
++ [*] (location|located|base|based) [*]
 - Our headquarters is in Carrigaline, County Cork, Ireland, but we have writers at several locations throughout Ireland? 
 
 + [*] (locations) [*]
