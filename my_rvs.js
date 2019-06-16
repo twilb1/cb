@@ -1,15 +1,29 @@
 
-window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-if ('SpeechRecognition' in window) {
-    // speech recognition API supported
+// Check if Browser client is Chrome
+const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+if (isChrome){
+    console.log("Bingo! You can use voice!");
 } else {
-    console.log("Speech Recognition is not Supported in your Browser. Try using Chrome.");
-};
+    console.log("Oops! Voice is not available");
+}
 
+if (isChrome){
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if ('SpeechRecognition' in window) {
+        // speech recognition API supported
+    } else {
+        console.log("Speech Recognition is not Supported in your Browser. Try using Chrome.");
+    };
+    var recognition = new SpeechRecognition();  // Declare a speech recognition object 
+    recognition.lang = 'en-UK';
+    var synth = window.speechSynthesis;           // Declare new speech synthesis object
+}
+
+// For database logging
 var xhr = new XMLHttpRequest();
 var data;
 
+// Create variable to hold the state of the Voice button
 var v_enable = new Boolean;
 let bot = new RiveScript();
 
@@ -23,38 +37,23 @@ const brains = [
     'brain_r.rive'
 ];
 
-const recognition = new SpeechRecognition();  // Declare a speech recognition object 
-recognition.lang = 'en-UK';
-var synth = window.speechSynthesis;           // Declare new speech synthesis object
-
 // $(document).ready(function() { }           // Not used; yet at least! :-)
 
 let checkbox = document.querySelector("input[name=checkbox]");  // in HTML file ensure ref to JS file is at EOF
 checkbox.addEventListener( 'change', function() {
 if(this.checked) {
    v_enable = true;
-   window.begin_voice();
+   if(isChrome){     
+      window.begin_voice();
+   }
 } else {
     v_enable = false;
-    window.end_voice();
+   if(isChrome){     
+      window.end_voice();
+   }
 }
 // console.log(v_enable);
 });
-
-/* let v_button = document.querySelector("button[name=btn]"); 
-v_button.addEventListener('click', function(){
-    {
-        if(this.value==1){
-            this.value=0;
-            v_enable = false;
-            window.begin_voice();}      
-        else if(this.value==0){
-            this.value=1;
-            v_enable = true;
-            window.end_voice();}
-      }
-});*/
-
 
 function begin_voice(){                 // Only called when v_enable is True
     console.log(v_enable);
@@ -81,7 +80,7 @@ function begin_voice(){                 // Only called when v_enable is True
     recognition.start();
 }
 
-function end_voice(){
+function end_voice(){                  // Only called when v_enable is True and isChrome is True
     recognition.stop();
 }
 
@@ -97,29 +96,31 @@ function botReply(message){
     botresp_log = message;      // Bot reply message to log in the db
     message_container.innerHTML += `<div class="bot">${message}</div>`;
     location.href = '#edge';
-    if(v_enable == true){
-        var voices = window.speechSynthesis.getVoices();
-        var utterThis = new SpeechSynthesisUtterance(message);
-        utterThis.voice = voices[1];                             // Here's where we can change the voice 
-        // Stop recognition while bot is speaking
-        var t;
-        utterThis.onstart = function (event) {
-            recognition.stop();
-//            t = event.timeStamp;
-//            console.log(t);
-            document.querySelector("input[name=checkbox]").disabled = true;
-        };
-        utterThis.onend = function (event) {
-            t = event.timeStamp - t;
-//            console.log(event.timeStamp);
-//            console.log((t / 1000) + " seconds");
-            recognition.start();
- //           console.log(recognition.start);
-            document.querySelector("input[name=checkbox]").disabled = false;
-        };
-        synth.speak(utterThis);                                 // Create an utterance object and speak it
-        // This is where we need to send the POST request to the server with current user request and cbot reply
-    }
+    if(isChrome){
+        if(v_enable == true){
+            var voices = window.speechSynthesis.getVoices();
+            var utterThis = new SpeechSynthesisUtterance(message);
+            utterThis.voice = voices[1];                             // Here's where we can change the voice 
+            // Stop recognition while bot is speaking
+            var t;
+            utterThis.onstart = function (event) {
+                recognition.stop();
+    //            t = event.timeStamp;
+    //            console.log(t);
+                document.querySelector("input[name=checkbox]").disabled = true;
+            };
+            utterThis.onend = function (event) {
+                t = event.timeStamp - t;
+    //            console.log(event.timeStamp);
+    //            console.log((t / 1000) + " seconds");
+                recognition.start();
+     //           console.log(recognition.start);
+                document.querySelector("input[name=checkbox]").disabled = false;
+            };
+            synth.speak(utterThis);                                 // Create an utterance object and speak it
+            // This is where we need to send the POST request to the server with current user request and cbot reply
+        }
+    }    
     console.log("User: " + userreq_log);
     console.log("Cbot: " + botresp_log);
     postDialog();
@@ -165,15 +166,4 @@ function postDialog(){
    };
    xhr.send(data);
 
-
-//    const xhr = new XMLHttpRequest();
-//    xhr.onload = function(){               // Takes care of the server response first
-//        console.log(this.responseText);
-//    };
-//    xhr.open("POST","http://127.0.0.1:3000/dialog");
-//    xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-//    xhr.send("user=userreq&cbot=botresp");
-//    xhr.onreadystatechange = (e) =>{
-//        console.log(xhr.responseText);
-//    };
 }
